@@ -48,3 +48,25 @@ kits.randomRGBColor = function(n,m) {
   let B = Math.floor(Math.random() * (m - n + 1) + n);
   return R + ',' + G + ',' + B;
 }
+
+/**
+ * @description 从本地存储里获取数据
+ * @param {string} key 要取出的数据的key名
+ * @returns {object} 从本地存储取通过JSON转换后的的数据
+ */
+kits.getLocalStorage = function(key) {
+  let json = localStorage.getItem(key);
+  let arr = JSON.parse(json);
+  return arr || [];
+}
+
+/**
+ * @description 封装好的把复杂数据存储到本地里面的方法，默认是存储json格式字符串
+ * @param {string} key 存储到本地里面的键
+ * @param {object} obj 要存储的复杂数据
+ * @returns undefined
+ */
+kits.savaLocalStorage= function(key,obj) {
+  let json = JSON.stringify(obj);
+  localStorage.setItem(key, json);
+}
