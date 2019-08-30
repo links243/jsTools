@@ -46,8 +46,25 @@ kits.randomRGBColor = function(n,m) {
   let R = Math.floor(Math.random() * (m - n + 1) + n);
   let G = Math.floor(Math.random() * (m - n + 1) + n);
   let B = Math.floor(Math.random() * (m - n + 1) + n);
-  return R + ',' + G + ',' + B;
+  return `(${R},${G},${B})`;
 }
+
+// 封装了一个随机生成十六进制颜色的函数
+kits.randomHaxColor = function() {
+  // 定义一个可以存放构成十六进制颜色值的值
+  let colorValue = "0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f";
+  // 将字符串分割为字符数组
+  let colorArray = colorValue.split(",");
+  // 定义一个字符串变量用来存储字符串变量，先将#存放进去
+  let color = "#";
+  // 生成一个字符长度为16的随机数组
+  colorArray[Math.floor(Math.random() * 16)];
+  // 遍历该数组用来存储新的十六进制的颜色
+  for (let i = 0; i < 6; i++) {
+    color = color + colorArray[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
 
 /**
  * @description 从本地存储里获取数据
