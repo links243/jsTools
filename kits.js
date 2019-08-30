@@ -61,7 +61,7 @@ kits.randomHaxColor = function() {
   colorArray[Math.floor(Math.random() * 16)];
   // 遍历该数组用来存储新的十六进制的颜色
   for (let i = 0; i < 6; i++) {
-    color = color + colorArray[Math.floor(Math.random() * 16)];
+    color += colorArray[Math.floor(Math.random() * 16)];
   }
   return color;
 };
@@ -87,3 +87,41 @@ kits.savaLocalStorage= function(key,obj) {
   let json = JSON.stringify(obj);
   localStorage.setItem(key, json);
 }
+
+/**
+ * @description 根据对应的id从localStorage中指定键(key)的数组中删除一条数据
+ * @param {string} key 要删除数据的键
+ * @param {number} id 要删除的数据id
+ * @returns undefined
+ */
+kits.deleteLocalDataById = function(key, id) {
+  var data = localStorage.getItem(key);
+  var arr = JSON.parse(data);
+  arr = arr || [];
+  arr.forEach(function(e, i) {
+    if (e.id == id) {
+      arr.splice(i, 1);
+    }
+  });
+  data = JSON.stringify(arr);
+  localStorage.setItem(key, data);
+};
+
+/**
+ * @description 根据id修改localStorage里面的指定键(key)的数组数据
+ * @param {string} key 要修改数据的键
+ * @param {number} id 要修改的数据id
+ * @returns undefined
+ */
+kits.modifyLocalDataById = function(key, id, datas) {
+  var data = localStorage.getItem(key);
+  var arr = JSON.parse(data);
+  arr = arr || [];
+  arr.forEach(function(e, i) {
+    if (e.id == id) {
+      e = datas;
+    }
+  });
+  data = JSON.stringify(arr);
+  localStorage.setItem(key, data);
+};
