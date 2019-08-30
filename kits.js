@@ -40,3 +40,11 @@ kits.getId = function(){
   let id = time + '' + r;
   return id;
 }
+
+// 返回随机RGB颜色
+kits.randomRGBColor = function(n,m) {
+  let R = Math.floor(Math.random() * (m - n + 1) + n);
+  let G = Math.floor(Math.random() * (m - n + 1) + n);
+  let B = Math.floor(Math.random() * (m - n + 1) + n);
+  return R + ',' + G + ',' + B;
+}
